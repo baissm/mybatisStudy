@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 绑定一个对应的Dao、Mapper接口 -->
+<mapper namespace="com.baissy.dao.UserMapper">
+    <!-- select 查询语句 -->
+    <select id="getUserList" resultType="com.baissy.poio.User">
+        select * from mybatis.user;
+    </select>
+    <select id="getUserById" parameterType="int" resultType="com.baissy.poio.User">
+        select * from mybatis.user where id=#{id};
+    </select>
+    <insert id="addUser" parameterType="com.baissy.poio.User">
+        insert into mybatis.user(id,name,pwd) value (#{id},#{name},#{pwd})
+    </insert>
+    <update id="updataUser" parameterType="com.baissy.poio.User">
+        update mybatis.user set name=#{name},pwd=#{pwd} where id=#{id}
+    </update>
+    <delete id="deleteUser" parameterType="int">
+        delete from mybatis.user where id=#{id}
+    </delete>
+</mapper>
